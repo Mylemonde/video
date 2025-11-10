@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDIO A - Adam's Weaving Artistry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            letter-spacing: 3px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        
+        .video-section {
+            padding: 40px 0 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        video {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+        
+        .play-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .video-info {
+            margin-top: 25px;
+            text-align: center;
+            max-width: 700px;
+        }
+        
+        .video-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 300;
+        }
+        
+        .video-info p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+        
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .text-content {
+            max-width: 100%;
+        }
+        
+        .text-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            text-align: justify;
+        }
+        
+        .image-with-caption {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #333, #555);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #888;
+        }
+        
+        .image-caption {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            text-align: center;
+            font-style: italic;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        
+        .credits {
+            margin-top: 40px;
+            font-style: italic;
+            color: #888;
+            text-align: center;
+        }
+        
+        .highlight {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .quote-mark {
+            font-size: 3rem;
+            color: #666;
+            line-height: 1;
+            margin-bottom: -20px;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+            
+            .image-placeholder {
+                height: 300px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+        }
+        
+        /* Animation effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="fade-in">STUDIO A</h1>
+            <p class="subtitle fade-in delay-1">Adam's Weaving Artistry</p>
+        </header>
+        
+        <section class="video-section">
+            <div class="video-container fade-in delay-1">
+                <!-- Replace the src attribute value with your video URL -->
+                <video controls poster="https://placehold.co/900x500/333/ffffff?text=STUDIO+A+Weaving+Process">
+                    <source src="请在此处替换为您的视频地址" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="video-controls">
+                    <button class="play-btn">▶</button>
+                </div>
+            </div>
+            
+            <div class="video-info fade-in delay-2">
+                <h2>The Art of Weaving</h2>
+                <p>Watch Adam transform simple threads into intricate textile art through his meticulous weaving process.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="text-content">
+                <p class="fade-in">Watching Adam diligently work the studio loom, passing yarn between parallel threads and conjuring a 'whole' out of small parts, is mesmerising. It's as if the apparatus is a natural extension of him, as brush to a painter. He is <span class="highlight">Studio A's resident artisan</span>, and his scarves, baby blankets and bags have been scooped up by keen supporters in search of cohesive, wearable works of art.</p>
+                
+                <div class="image-with-caption fade-in delay-1">
+                    <div class="image-placeholder">
+                        <img src="image\2.png" alt="Adam Mandarano working at the studio loom">
+                    </div>
+                    <div style="height: 200px;"></div>
+                    <p class="image-caption">Adam Mandarano working at the studio loom</p>
+                </div>
+               
+                <p class="fade-in">Adam has a lower bird-like methodology; he uses whatever material he can find on hand. Though he carefully considers his patterning every work is a testament to this attitude of resourcefulness and waste avoidance.</p>
+                
+                <p class="fade-in">In 2022, Romance was Born approached Adam to create bespoke handwoven textiles that were tailored into pieces for their Resort acquisition for Australian Fashion Week. Seeing the two garments on the runway brought tears to Adam's eyes. The National Gallery of Australia subsequently acquired the two pieces.</p>
+                
+                <div class="image-with-caption fade-in delay-2">
+                    <div class="image-placeholder">
+                        <img src="image\1.png" alt="Detail of Adam's intricate weaving patterns">
+                    </div>
+                    <p class="image-caption">Detail of Adam's intricate weaving patterns</p>
+                </div>
+                
+                <p class="fade-in">Adam is particularly fond of weaving outdoors and in public, where he likes "seeing everyone's faces". Adam has woven at Cut N Polish at Carriageworks, Sydney Craft Week at Casula Powerhouse and Working Dog Gallery. He is also a regular fixture at the annual Makers Market at the Australian Design Centre.</p>
+                
+                <p class="fade-in">For the future, Adam plans to "keep on weaving, see friends a lot and sell my scarves".</p>
+                
+                <div class="credits fade-in delay-2">
+                    - Words by Will Kollmorgen, portrait by Scott Heldorf
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 STUDIO A. All rights reserved.</p>
+            <p>Explore more: <a href="https://www.studioa.org.au/pages/adam-mandarano" style="color: #aaa;">studioa.org.au/adam-mandarano</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Video control functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const playBtn = document.querySelector('.play-btn');
+            const video = document.querySelector('video');
+            
+            // Play/pause functionality
+            playBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    playBtn.innerHTML = '❚❚';
+                } else {
+                    video.pause();
+                    playBtn.innerHTML = '▶';
+                }
+            });
+            
+            // Update button when video playback state changes
+            video.addEventListener('play', function() {
+                playBtn.innerHTML = '❚❚';
+            });
+            
+            video.addEventListener('pause', function() {
+                playBtn.innerHTML = '▶';
+            });
+            
+            // Add scroll animation effects
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                fadeObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
